@@ -1,0 +1,299 @@
+
+<div class="row text-center mt-lg-3 mt-md-2 mt-sm-1 pt-sm2" style="color:#f04506;
+">
+  <owl-carousel-o [options]="infoOption">
+    <ng-template carouselSlide><h5 class="quote " style="font-weight:400; " > <i class="fa fa-birthday-cake" aria-hidden="true"></i> Cakelicious : The Most beautiful cakes in the Town...</h5></ng-template>
+    <ng-template carouselSlide><h5 class="quote " ><i class="fa  fa-map-marker-alt " aria-hidden="true" ></i> location : INDORE </h5></ng-template>
+  </owl-carousel-o>
+</div>
+<section class="mt-2  mt-sm-0">
+  <div class="container-fluid">
+    <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+          aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+          aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+          aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+          aria-label="Slide 4"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="../../../assets/images/F-Banner-4.png"  class="d-block w-100"  />
+          <div   class="carousel-caption carousel-text" data-aos="fade-down">
+            <h5 >CAKELICIOUS</h5>
+            <h4 class="mt-lg-4">Only fresh Cakes</h4>
+            <p class="mt-lg-4" data-aos="fade-right"> All of our products are made from scratch using family recipes with only the highest quality ingredients. We
+              bake and sell fresh daily to ensure only the best products are sold to our customers.</p>
+          </div>
+        </div>
+
+        <div class="carousel-item ">
+          <img src="../../../assets/images/F-Banner-3.png"  class="d-block w-100"  />
+          <div class="carousel-caption carousel-text cr-2" data-aos="fade-down">
+
+            <h4>Delicous Cakes For You</h4>
+            <p  data-aos="fade-right">Cake comes in all sizes, shapes, and flavors, it’s perfect for any kind of event or occasion. Time and time again, it’s the star attraction. It's to no surprise that it gets a lot of flashy snapshots!</p>
+          </div>
+        </div>
+
+        <div class="carousel-item" style="background-color:#fff5f2">
+          <img src="../../../assets/images/Banner-final (2).png"  class="d-block w-100"  />
+          <div   class="carousel-caption carousel-text cr-3"   data-aos="fade-down" >
+
+            <h4>Aamlicious Cakes</h4>
+            <p  data-aos="fade-right">“Cakes are special. Every birthday, every celebration ends with something sweet, a cake, and people remember. It’s all about the memories.”</p>
+          </div>
+
+        </div>
+
+
+
+
+
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+</section>
+
+
+
+
+
+<section class="wwo" data-aos="zoom-out-right">
+<div class="container" >
+  <div class="heading" style="width:max-content; margin:0 auto;">
+  <h1 class="text-center" >What We <span style="color:var(--head-text)">Offer</span></h1>
+  <hr style="color:#f04506">
+  <h4 class="text-center">Popular Occassion</h4>
+</div>
+  <owl-carousel-o [options]="what_we_offer_options" data-aos="fade-up"
+  data-aos-anchor-placement="top-center">
+    <ng-template carouselSlide *ngFor="let occassion of occassionList;">
+      <div class="post-slide m-4" data-aos="fade-up">
+        <div class="post-img" routerLink="/occassion-wise/{{occassion._id}}/{{occassion.occName}}">
+          <img  src="{{occassion.occImage}}" alt="">
+          <a  class="over-layer"><i><b>Explore</b></i></a>
+        </div>
+        <div class="post-content">
+          <h3 class="post-title">
+            <a>{{occassion.occName}} Cakes</a>
+          </h3>
+
+          <p class="post-description">{{occassion.occDescription}}</p>
+
+          <div class="post-btn mb-2">
+          <span *ngIf="occassion.occName=='Birthday'" class="post-date">🎂</span>
+          <span *ngIf="occassion.occName=='Wedding'" class="post-date">👰</span>
+          <span *ngIf="occassion.occName=='Baby Shower'" class="post-date">👼</span>
+          <span *ngIf="occassion.occName=='Anniversory'" class="post-date">🧑‍🤝‍🧑</span>
+          <a  class="read-more" routerLink="/occassion-wise/{{occassion._id}}/{{occassion.occName}}"> View Products</a>
+</div>
+        </div>
+      </div>
+    </ng-template>
+  </owl-carousel-o>
+</div>
+
+</section>
+
+
+<section class="flavours-section" >
+<div class="container p-5">
+  <div class="heading text-center" style=" width: fit-content;
+  margin: 0 auto;
+">
+
+    <h1 data-aos="zoom-in">Flavours</h1>
+    <hr style="color:var(--head-text)">
+    <p data-aos="fade-up"
+    data-aos-anchor-placement="center-bottom" style="font-size: 1.2rem; letter-spacing:0.5px">Experince variaty of flavours</p>
+  </div>
+  <owl-carousel-o [options]="customOptions">
+    <ng-template carouselSlide *ngFor="let flavour of flavourList">
+      <div class="flavour-img m-3"><img class="p-lg-3 p-md-2 p-sm-1" src="{{flavour.flavourimage}}" style="border-radius:13%;">
+        <h5 class="text-center pb-2">{{flavour.flavourname}}</h5>
+      </div>
+    </ng-template>
+
+
+  </owl-carousel-o>
+
+</div>
+</section>
+
+
+<!-- PRODUCTS CARDS -->
+<section class="product-section big-screen">
+<div class="container">
+  <div class="pb-lg-5 pb-md-3 pb-sm-2" style="margin:0 auto; width:max-content">
+
+    <h1 class="heading text-center" data-aos="fade-down-right"> Our <span style="color:var(--head-text)"> Exclusive </span> Products </h1>
+    <hr style="color:#f04506">
+    </div>
+  <div class="row justify-content-center">
+    <div data-aos="zoom-in" class="post-slide m-4 col-lg-3 col-md-4 col-sm-2" *ngFor='let product of exclusiveList.slice(0,6)'>
+      <div class="post-img" >
+        <img src="{{product.prodImage1}}" alt="" routerLink="product-view/{{product._id}}">
+        <a routerLink="product-view/{{product._id}}" class="over-layer"><i class="fa fa-eye" aria-hidden="true"></i></a>
+      </div>
+      <div class="post-content my-1">
+        <h3 class="post-title" >
+          <a>{{product.prodName}}</a>
+        </h3>
+        <p class="post-description mb-3">{{product.prodDescription}}</p>
+        <span class="post-date">
+          <div class="mt-1 d-flex justify-content-between align-items-center">
+            <div class="small-ratings">
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star"></i>
+            </div>
+          </div>
+        </span>
+        <div class="mt-2 post-btn">
+          <span class="font-size-lg">₹{{product.prodPrice}}
+
+          </span>
+
+          <a  (click)="addCart(product._id)"  class="read-more">Add to Cart</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<section class="product-section small-screen">
+<div class="container">
+  <div style="margin:0 auto; width:max-content">
+  <h1 class="heading text-center">Our Exclusive Products</h1>
+  <hr>
+  </div>
+  <owl-carousel-o [options]="product_options">
+    <ng-template carouselSlide *ngFor="let product of exclusiveList">
+      <div class="post-slide m-4">
+        <div class="post-img">
+
+          <img
+            src="{{product.prodImage1}}"
+            alt="" routerLink="/product-view/{{product._id}}">
+          <a routerLink="/product-view/{{product._id}}" class="over-layer"><i class="fa fa-eye" aria-hidden="true"></i></a>
+        </div>
+        <div class="post-content">
+          <h3 class="post-title">
+            <a>{{product.prodName}}</a>
+          </h3>
+          <p class="post-description mb-2">{{product.prodDescription}}</p>
+          <span class="post-date">
+            <div class="mt-1 d-flex justify-content-between align-items-center">
+              <div class="small-ratings">
+                <i class="fa fa-star rating-color"></i>
+                <i class="fa fa-star rating-color"></i>
+                <i class="fa fa-star rating-color"></i>
+                <i class="fa fa-star rating-color"></i>
+                <i class="fa fa-star"></i>
+              </div>
+            </div>
+          </span>
+          <div class="mt-3">
+            <span class="font-size-lg">₹ {{product.prodPrice}}
+            </span>
+
+            <a (click)="addCart(product._id)" class="read-more">Add to Cart</a>
+
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </owl-carousel-o>
+</div>
+
+</section>
+
+
+
+
+
+
+
+<section class="why-choose-us pt-5 pb-5">
+  <div class="container p-lg-5 p-md-3 p-sm-2">
+    <div class="text-center mb-2-8 mb-lg-6">
+      <h1 class="display-18 display-md-16 display-lg-14 font-weight-700" style="color: rgb(58, 11, 11);">Why choose
+        <strong class="font-weight-700" style="color:#f04506">Us</strong>
+      </h1>
+      <span style="color: rgb(58, 11, 11); font-size: 1.1em;">The trusted source for why choose us</span>
+    </div>
+    <div class="row align-items-center text-center r">
+      <div class="col-sm-6 col-lg-4 mb-2-9 mb-sm-0">
+        <div class="pr-md-3">
+          <div class="text-center text-sm-right mt-lg-5 mt-md-3 mt-sm-2">
+            <div class="mb-4">
+              <i class="far fa-check-circle rounded-circle"></i>
+
+            </div>
+            <h4 class="sub-info placeholder-glow">QUALITY PRODUCTS</h4>
+            <p class="display-30 mb-0">
+              We guarantee the quality of all the cakes we provide as they are baked using the freshest ingredients..
+            </p>
+          </div>
+          <div class="text-center text-sm-right mt-lg-5 mt-md-3 mt-sm-2">
+            <div class="mb-4">
+              <i class="far fa-check-circle rounded-circle"></i>
+
+            </div>
+            <h4 class="sub-info">FREE DELIVERY</h4>
+            <p class="display-30 mb-0">
+              All orders submitted by our indian clients are delivered for free throughout the India.</p>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 d-none d-lg-block fadeOutDownBig">
+        <div class="why-choose-center-image" style="margin-left:30px">
+          <img src="../../../assets/images/logo-removebg-preview (1).png" alt="..." class="roun"
+            style="background:transparent;">
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4 ">
+        <div class="pl-md-3">
+          <div class="text-center text-sm-left mt-lg-5 mt-md-3 mt-sm-2">
+            <div class="mb-4">
+              <i class="fa fa-credit-card rounded-circle"></i>
+            </div>
+            <h4 class="sub-info"> ONLINE PAYMENT</h4>
+            <p class="display-30 mb-0">
+              We accept all kinds of online payments including Visa, MasterCard, American Express credit cards..</p>
+          </div>
+          <div class="text-center text-sm-left mt-lg-5 mt-md-3 mt-sm-2">
+            <div class="mb-4">
+              <i class="far fa-check-circle rounded-circle"></i>
+
+            </div>
+            <h4 class="sub-info "> CATERING SERVICE</h4>
+            <p class="display-30 mb-0">
+
+              Our bakery also provides an outstanding catering service for events and special occasions..</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

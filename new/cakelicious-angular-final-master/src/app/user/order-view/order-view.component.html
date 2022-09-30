@@ -1,0 +1,195 @@
+<h3 *ngIf="isOrder" routerLink="empty-cart/4"></h3>
+<div class="container my-5  d-flex  justify-content-center" *ngFor="let item of orderList; index as i">
+
+    <div class="card-1 lg-mx-5 sm-m-2">
+
+
+        <div class="card-body">
+            <div class="row justify-content-between mb-3">
+                <div class="col-auto">
+                    <h6 class="color-1 mb-0 change-color">Order-History</h6>
+                </div>
+                <div class="col-auto">
+                    <h6 class="color-1 mb-0 change-color">Order-Number : {{i+1}}</h6>
+                </div>
+                <div class="col-auto active "> <small>Order Id : {{item.orderId}}</small> </div>
+            </div>
+            <div class="row" *ngFor="let prodItem of item.orderedItem; index as j">
+                <div class="col-lg-7 col-md-12 col-sm-12  ">
+                    <div class="card card-2">
+                        <div class="card-body sm-p-2">
+                            <div class="media">
+                                <div class="sq align-self-center "> <img
+                                        class="img-fluid  my-auto align-self-center mr-2 mr-md-4 pl-0 p-0 m-0"
+                                        src="{{prodItem.ProductId.prodImage1}}" width="135" height="135" /> </div>
+                                <div class="media-body my-auto text-right">
+                                    <div class="row  my-auto flex-column flex-md-row">
+                                        <div class="col my-auto">
+                                            <h6 class="mb-0"> {{prodItem.ProductId.prodName}}</h6>
+                                        </div>
+                                        <!-- <div class="col-auto my-auto"> <small>Cake Name</small></div> -->
+                                        <div class="col my-auto"> <small>Size : {{prodItem.size}}</small></div>
+                                        <div class="col my-auto"> <small>Qty : {{prodItem.Qty}}</small></div>
+                                        <div class="col my-auto">
+                                            <h6 class="mb-0">&#8377;{{prodItem.ProductId.prodPrice}}
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="my-3 ">
+                            <div class="row">
+                                <div class="col-md-3 mb-3"> <small> Track Order <span><i class=" ml-2 fa fa-refresh"
+                                                aria-hidden="true"></i></span></small> </div>
+                                <div class="col mt-auto">
+                                    <div *ngIf="item.orderStatus == 'Confirmed'" class="progress my-auto">
+                                        <div class="progress-bar progress-bar  rounded" style="width: 25%"
+                                            role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                        </div>
+                                    </div>
+                                    <div class="progress my-auto" *ngIf="item.orderStatus == 'preparing'">
+                                        <div class="progress-bar progress-bar  rounded" style="width: 50%"
+                                            role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                        </div>
+                                    </div>
+                                    <div class="progress my-auto" *ngIf="item.orderStatus == 'Out For Delivery'">
+                                        <div class="progress-bar progress-bar  rounded" style="width: 75%"
+                                            role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                        </div>
+                                    </div>
+                                    <div class="progress my-auto" *ngIf="item.orderStatus == 'Delivered'">
+                                        <div class="progress-bar progress-bar  rounded" style="width: 100%"
+                                            role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                        </div>
+                                    </div>
+                                    <div class="media row mt-3">
+
+                                        <!-- Confirmed -->
+                                        <div class="col-3 text-right "><span>Confirmed <small
+                                                    class="text-right mr-sm-3"></small> <i
+                                                    class="fa fa-check active"></i> </span>
+                                        </div>
+
+                                        <!-- Preparing -->
+
+                                        <div class="col-3 flex-col-auto" *ngIf="item.orderStatus=='Preparing'">
+                                            <span> <small class="text-right mr-sm-2">Preparing</small><i
+                                                    class="fa fa-spinner fa-spin"></i></span>
+                                        </div>
+                                        <div class="col-3 flex-col-auto" *ngIf=" item.orderStatus=='Out For Delivery' || item.orderStatus=='Delivered'">
+                                            <span> <small class="text-right mr-sm-2">order prepared</small><i
+                                                    class="fa fa-birthday-cake"></i></span>
+                                        </div>
+
+                                        <!-- Out For Delivery -->
+
+                                        <div class="col-3 flex-col-auto"
+                                            *ngIf="item.orderStatus=='Out For Delivery'">
+                                            <small class="text-right mr-sm-2">Out For
+                                                Delivery</small><span> <img src="https://cdn.dribbble.com/users/379798/screenshots/3244368/scooter-running.gif" class="img-fluid"></span></div>
+
+                                        <div class="col-3 flex-col-auto" *ngIf="item.orderStatus=='Delivered'">
+                                        <small class="text-right mr-sm-1">Out For
+                                            Delivery</small><span><i class="fa fa-check" aria-hidden="true"></i></span></div>
+
+                                                <!-- Delivered -->
+                                        <div *ngIf="item.orderStatus=='Delivered'" class="col-3 flex-col-auto">
+                                            <small class="text-right mr-sm-2">Delivered
+                                            </small><span> <i class="fa fa-check-circle"></i></span></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12 col-md-12 " *ngIf="item.orderStatus=='Delivered'">
+                    <div class="cont mx-lg-5 m-2">
+                        <div class="m-3" *ngFor="let review of prodItem.ProductId.prodReview.slice(0,1);">
+                            {{review.review}}
+                            <div *ngIf="review.userId==userId" class="thank-div m-4" style="color:#fd4">
+                                <i *ngIf="review.rating>=1" class="fa fa-star" aria-hidden="true"></i>
+                                <i *ngIf="review.rating>=2" class="fa fa-star" aria-hidden="true"></i>
+                                <i *ngIf="review.rating>=3" class="fa fa-star" aria-hidden="true"></i>
+                                <i *ngIf="review.rating>=4" class="fa fa-star" aria-hidden="true"></i>
+                                <i *ngIf="review.rating>=5" class="fa fa-star" aria-hidden="true"></i>
+                                <h4 class="mt-3 text-black">thank you for review</h4>
+                                <button class=" mt-3 btn btn-primary fa fa-edit"
+                                    (click)="changeRev(review._id,(i+j))">edit review</button>
+                            </div>
+                        </div>
+                        <div *ngIf="prodItem.ProductId.prodReview.length==0|| rev[i]" class="star-div">
+                            <div class="stars">
+                                <!-- <p>{{prodItem.ProductId._id}}</p>  -->
+                                <ngx-star-rating [id]="'star'+prodItem.ProductId._id"
+                                    (change)="getStars($event,prodItem.ProductId._id,i)"></ngx-star-rating>
+                            </div>
+                            <p id="{{'rating'+prodItem.ProductId._id}}"></p>
+
+                            <h3 *ngIf="stars==5"> Very Goood 😍</h3>
+                            <h3 *ngIf="stars==4"> Goood</h3>
+                            <h3 *ngIf="stars==3"> ok</h3>
+                            <h3 *ngIf="stars==2"> not bad</h3>
+                            <h3 *ngIf="stars==1"> bad 😞</h3>
+
+                            <div class="m-3">
+                                <label for="" class="form-label">Please Give Your Reviews</label>
+                                <textarea class="form-control" #message rows="3" placeholder="Message"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-outline-warning"
+                                (click)="sendReview(message.value,prodItem.ProductId._id)">Submit</button>
+                            <!-- <button class="btn btn-primary fa fa-edit mx-3"></button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col">
+                    <div class="row justify-content-between">
+                        <div class="col-auto">
+                            <p class="mb-1 text-dark"><b>Order Details</b></p>
+                        </div>
+                        <div class="flex-sm-col text-right col">
+                            <p class="mb-1"><b>Total</b></p>
+                        </div>
+                        <div class="flex-sm-col col-auto">
+                            <p class="mb-1">&#8377;{{item.total}}</p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-between">
+                        <div class="flex-sm-col text-right col">
+                            <p class="mb-1"> <b>Discount</b></p>
+                        </div>
+                        <div class="flex-sm-col col-auto">
+                            <p class="mb-1">&#8377;{{item.total*20/100}}</p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-between">
+                        <div class="flex-sm-col text-right col">
+                            <p class="mb-1"><b>GST 12%</b></p>
+                        </div>
+                        <div class="flex-sm-col col-auto">
+                            <p class="mb-1">&#8377;{{item.total*12/100}}</p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-between">
+                        <div class="flex-sm-col text-right col">
+                            <p class="mb-1"><b>Delivery Charges</b></p>
+                        </div>
+                        <div class="flex-sm-col col-auto">
+                            <p class="mb-1">Free</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row invoice ">
+                <div class="col text-black">
+                    <p class="mb-1"> PAYMENT ID : {{item.paymentId}}</p>
+                    <p class="mb-1">ORDDER Date : {{item.updatedAt}} </p>
+                    <p class="mb-1">TRANSACTION ID: {{item.transactionId}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

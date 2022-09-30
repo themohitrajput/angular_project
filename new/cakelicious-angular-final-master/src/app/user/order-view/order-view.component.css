@@ -1,0 +1,117 @@
+
+.container-fluid {
+    margin-top: 100px ;
+}
+
+p {
+    font-size: 14px;
+    margin-bottom: 7px;
+
+}
+
+.small {
+    letter-spacing: 0.5px !important;
+}
+
+.card-1 {
+    box-shadow: 2px 2px 10px 0px var(--head-text);
+    display:flex;
+    width:inherit;
+}
+
+hr {
+    background-color: rgba(248, 248, 248, 0.667);
+}
+
+
+.bold {
+    font-weight: 500;
+}
+
+.change-color {
+    color: var(--head-text) !important;
+}
+
+.card-2 {
+    box-shadow:var(--btn-shadow-back)
+
+}
+
+.fa-circle.active {
+    font-size: 8px;
+    color: var(--head-text);
+}
+
+.fa-circle {
+    font-size: 8px;
+    color: #aaa;
+}
+
+.rounded {
+    border-radius: 2.25rem !important;
+}
+
+
+.progress-bar {
+    background-color: var(--head-text) !important;
+}
+
+
+.progress {
+    height: 5px !important;
+    margin-bottom: 0;
+}
+
+.invoice {
+    position: relative;
+    top: -70px;
+}
+
+
+
+
+
+h2 {
+    color: rgb(92, 28, 0);
+    letter-spacing: 2px !important;
+}
+
+
+
+@media (max-width: 479px) {
+    .invoice {
+        position: relative;
+        top: 7px;
+    }
+
+    .border-line {
+        border-right:var(--btn-shadow-back) !important;
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    h2 {
+        color: rgb(92, 37, 0);
+        font-size: 17px;
+    }
+
+   
+}
+
+
+.border-line {
+    border-right: 1px solid rgb(226, 206, 226)
+}
+
+.media i{
+    color:rgb(18, 152, 18)
+}
+
+
+
+
+
+
+

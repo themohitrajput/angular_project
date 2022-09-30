@@ -1,0 +1,252 @@
+<div class="pd-wrap">
+  <div class="container" *ngFor="let prod of productList">
+    <div class="heading-section">
+      <h2>Product Details</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-6 d-flex flex-wrap" style="align-content:flex-start">
+        <!-- <div id="slider" class="owl-carousel product-slider"> -->
+        <div class="item p-3 w-50 ">
+          <img class="img-fluid" src="{{prod.prodImage1}}" />
+        </div>
+        <div class="item p-3 w-50">
+          <img class="img-fluid" src="{{prod.prodImage2}}" />
+        </div>
+        <div class="item p-3 w-50">
+          <img class="img-fluid" src="{{prod.prodImage3}}" />
+        </div>
+        <div class="item p-3 w-50">
+          <img class="img-fluid" src="{{prod.prodImage4}}" />
+        </div>
+
+
+        <!-- </div> -->
+        <!-- <div id="thumb" class="product-thumb">
+
+        </div> -->
+      </div>
+      <div class="col-md-6">
+        <div class="product-dtl" style="margin:13px">
+          <div class="product-info">
+            <div class="product-name d-flex justify-content-between">{{prod.prodName}}<div>
+                <button class="fa fa-heart" style="border: none;
+                color: #f0066a;"></button>
+              </div>
+            </div>
+            <div class="reviews-counter">
+              <div class="rate">
+                <input type="radio" id="star5" name="rate" value="5" checked />
+                <label for="star5" title="text">5 stars</label>
+                <input type="radio" id="star4" name="rate" value="4" checked />
+                <label for="star4" title="text">4 stars</label>
+                <input type="radio" id="star3" name="rate" value="3" checked />
+                <label for="star3" title="text">3 stars</label>
+                <input type="radio" id="star2" name="rate" value="2" />
+                <label for="star2" title="text">2 stars</label>
+                <input type="radio" id="star1" name="rate" value="1" />
+                <label for="star1" title="text">1 star</label>
+              </div>
+              <span>3 Reviews</span>
+            </div>
+            <div class="product-price-discount">
+              <span style="color:red;">20%</span> ₹{{prod.prodPrice}}
+              <span class="line-through">M.R.P.: ₹{{prod.prodPrice+(prod.prodPrice*20/100)}}</span><br>
+                <p>Inclusive of all taxes</p>
+              </div>
+          </div>
+          <p>{{prod.prodDescription}}</p>
+          <div class="row">
+            <div class="col-md-6">
+              <label for="size">Weight</label>
+              <select id="size" name="size" class="form-control" (change)="updateQuantity($event,'SIZE')">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
+            </div>
+
+          </div>
+          <div class="product-count">
+            <label for="size">Quantity</label>
+            <form action="#" class="display-flex">
+              <div class="qtyminus" onclick="this.parentNode.querySelector('input[id=form1]').stepDown()"
+                (click)="updateQuantity(val.value,'QTY')">-</div>
+              <input type="number" #val id="form1" name="qty" max=5 min=1 value=1 class="qty">
+              <div class="qtyplus" onclick="this.parentNode.querySelector('input[id=form1]').stepUp()"
+                (click)="updateQuantity(val.value,'QTY')">+</div>
+            </form>
+            <a (click)="addCart(prod._id)" style="color: white;"  class="round-black-btn addtocart" style="cursor: pointer;"> Add to Cart</a>
+            <a class="btn btn-secondry buy-now" data-bs-toggle="modal" data-bs-target="#exampleModal" class="close" data-dismiss="modal" aria-hidden="true"
+              class="round-black-btn mx-3" style="color:white; background: #FFD814;
+              border-color: #FCD200; box-shadow: 0px 10px 20px -10px #FFD814; cursor: pointer;">Buy Now</a>
+          </div>
+        </div>
+        <div>
+          <div class="caring-tip mt-5">
+            <h3>Caring Tips</h3>
+            <ul>
+              <li> <i class="fa fa-check-circle mx-3" aria-hidden="true"></i> While receiving, do not squeeze the sides
+                of the box.</li>
+              <li><i class="fa fa-check-circle mx-3" aria-hidden="true"></i> Keep the box upright on the table.</li>
+              <li><i class="fa fa-check-circle mx-3" aria-hidden="true"></i> Keep it away from direct sunlight.</li>
+              <li><i class="fa fa-check-circle mx-3" aria-hidden="true"></i> Store it in a cool place.</li>
+              <li><i class="fa fa-check-circle mx-3" aria-hidden="true"></i> Cover the leftover cake, then refrigerate.
+              </li>
+              <li><i class="fa fa-check-circle mx-3" aria-hidden="true"></i> The cake should be consumed within 24
+                hours.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="product-info-tabs">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="description-tab" data-bs-toggle="tab" href="#description" role="tab"
+            aria-controls="description" aria-selected="true">Description</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" id="review-tab" data-bs-toggle="tab" href="#review" role="tab" aria-controls="review"
+            aria-selected="false">Reviews (0)</a>
+        </li> -->
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+          {{prod.prodDescription}}
+        </div>
+        <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
+          <div class="review-heading">REVIEWS</div>
+          <p class="mb-20">{{prod.prodReview}}</p>
+          <form class="review-form">
+            <div class="form-group">
+              <label>Your rating</label>
+              <div class="reviews-counter">
+                <div class="rate">
+                  <input type="radio" name="rate" value="5" />
+                  <label for="star5" title="text">5 stars</label>
+                  <input type="radio" name="rate" value="4" />
+                  <label for="star4" title="text">4 stars</label>
+                  <input type="radio" name="rate" value="3" />
+                  <label for="star3" title="text">3 stars</label>
+                  <input type="radio" name="rate" value="2" />
+                  <label for="star2" title="text">2 stars</label>
+                  <input type="radio" name="rate" value="1" />
+                  <label for="star1" title="text">1 star</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Your message</label>
+              <textarea class="form-control" rows="6"></textarea>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="text" name="" class="form-control" placeholder="Name*">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="text" name="" class="form-control" placeholder="Email Id*">
+                </div>
+              </div>
+            </div>
+            <button class="round-black-btn">Submit Review</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">order Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="product-info-tabs">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="order-info-tab" data-bs-toggle="tab" href="#order-info" role="tab"
+                aria-controls="order-info" aria-selected="true">Product Info</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="payment-tab" data-bs-toggle="tab" href="#payment" role="tab"
+                aria-controls="payment" aria-selected="false">Payment</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="order-info" role="tabpanel" aria-labelledby="order-info-tab">
+              <div style="box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;">
+                <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-12">
+                    <form>
+                      <div class="form-group m-2">
+                        <label for="exampleFormControlTextarea1">Alternative number</label>
+                        <input class="form-control" type="text" [(ngModel)]="alterNumber" name="alterNumber" id="exampleFormControlTextarea1">
+                      </div>
+                      <div class="form-group m-2">
+                        <label for="exampleFormControlTextarea1">you can Add some message</label>
+                        <textarea class="form-control" name="message" id="exampleFormControlTextarea1"
+                          [(ngModel)]="message" rows="3"></textarea>
+                      </div>
+                      <div class="form-group m-2">
+                        <label for="exampleFormControlTextarea1">Address</label>
+                        <textarea class="form-control" [(ngModel)]="Address" name="Address"
+                          id="exampleFormControlTextarea1" rows="3"></textarea>
+                      </div>
+
+                    </form>
+                  </div>
+                  <div class="col-lg-5 col-md-5 col-sm-12">
+                    <h2>Total Amount :</h2>
+                    <h2>&#x20b9; {{totalAmt}}</h2>
+                    <div class="nav nav-tabs" id="myTab" role="tablist">
+                      <button type="button" class="btn btn-warning" id="payment-tab" data-bs-toggle="tab"
+                        href="#payment" role="tab" aria-controls="payment" aria-selected="false">Procced To
+                        Buy</button>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+
+            </div>
+            <div class="tab-pane fade" #payment id="payment" role="tabpanel" aria-labelledby="payment-tab">
+
+              <!-- <div class="form-check">
+                <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked (click)="changePayMethod(online)">Online Payment (Razorpay)
+                <label class="form-check-label" for="radio1"></label>
+              </div>
+              <div class="form-check">
+                <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2" (click)="changePayMethod(cash)">Cash on Delivery
+                <label class="form-check-label" for="radio2"></label>
+              </div> -->
+              <h4>Choose your payment Option :</h4>
+              <button class="btn btn-primary d-block mt-3 width-50" data-bs-dismiss="modal" aria-label="Close"
+                (click)="pay('online')">pay ₹{{totalAmt}}
+                (Razorpay)</button>
+              <div>Or</div>
+              <button class="btn btn-warning mt-3" data-bs-dismiss="modal" aria-label="Close"
+                (click)="pay('cash')">place order (cash on delivery)</button>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
