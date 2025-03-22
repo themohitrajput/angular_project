@@ -1,0 +1,10 @@
+# Exported from Render on 2025-03-22T21:25:38Z
+services:
+- type: web
+  name: Cake-Frontend
+  runtime: static
+  repo: https://github.com/themohitrajput/angular_project/tree/master/frontend/
+  buildCommand: npm install
+  staticPublishPath: ng serve
+  rootDir: frontend
+version: "1"
