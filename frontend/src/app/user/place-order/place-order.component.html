@@ -1,0 +1,23 @@
+  <div class="contact">
+    <div class="cake-contact-row">
+      <div class="cake-contact-col" style="background-color:white;">
+        <h1>Items</h1>
+        <h3>Total Amount</h3>
+        <form #userForm="ngForm" (ngSubmit)="userForm">
+          <input type="text" name="name" id="name" required placeholder="Enter your name" disabled
+            />
+          <input type="text" name="email" id="email" required placeholder="Enter your email" disabled
+            />
+          <input type="text" name="mobile" id="mobile" required placeholder="Enter your Mobile" disabled
+             />
+             <input type="text" name="address" id="address" required placeholder="Enter your Address" disabled
+             />
+          <textarea row="8" col="10"  name="msg" placeholder="Give msg on Cake"
+            required></textarea>
+          <button  class="btn">
+            Procced to Payment
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>

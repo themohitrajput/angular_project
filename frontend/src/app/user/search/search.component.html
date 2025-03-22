@@ -1,0 +1,42 @@
+<!-- freeeek -->
+<div class="container-fluid" style="color:#fff">
+    <div class="row">
+      <div class="col">
+        <!-- <img class="img-fluid" src="{{categoryDetail.catImage}}" alt=""> -->
+      </div>
+    </div>
+    <h1 class="text-center m-5" style="color:#000000">Explore our all Cakes</h1>
+    <div class="row">
+      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6" *ngFor="let product of productList
+        |filter:searchText
+
+  ">
+        <div class="post-slide m-4">
+          <div class="post-img">
+            <img src="{{product.prodImage1}}" alt="">
+            <div class="over-layer">
+
+              <button class="btn btn-secondary"><i class="fa fa-heart" aria-hidden="true"></i></button>
+              <button class="btn btn-secondary"> <i class="fa fa-eye" routerLink="/product-view/{{product._id}}" aria-hidden="true"></i></button>
+
+            </div>
+          </div>
+          <div class="post-content">
+            <h3 class="post-title">
+              <a>{{product.prodName}}</a>
+            </h3>
+
+            <p class="post-description">{{product.prodDescription}}</p>
+            <span class="post-date"> <i style="color:yellow" class="zmdi zmdi-star"></i> <i style="color:yellow"
+                class="zmdi zmdi-star"></i> <i style="color:yellow" class="zmdi zmdi-star"></i> <i style="color:yellow"
+                class="zmdi zmdi-star"></i> <i style="color:yellow" class="zmdi zmdi-star"></i></span>
+            <a (click)="addCart(product._id)"  class="read-more"><i class="fa fa-cart-arrow-down"
+                aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+

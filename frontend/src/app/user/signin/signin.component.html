@@ -1,0 +1,50 @@
+<div class="main">
+  <!-- Sing in  Form -->
+  <section class="sign-in m-0">
+    <div class="container">
+      <div class="signin-content">
+
+        <div class="signin-image">
+          <figure><img src="../../../assets/images/logo.png" alt="sing up image"></figure>
+          <a routerLink="/signup" class="signup-image-link">Create an account</a>
+        </div>
+        <div class="signin-form p-sm-0">
+          <h2 class="form-title">Sign In</h2>
+
+          <form class="register-form" #userForm="ngForm" (ngSubmit)="userForm">
+            <div class="form-group">
+              <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+              <input type="email" name="email"  id="email" placeholder="Your email" required [(ngModel)]="user.email"  #userEmail="ngModel"/>
+              <span class="spantag" *ngIf="userEmail.errors?.['required'] && userEmail.touched">Please Enter Valid Email</span>
+            </div>
+            <div class="form-group">
+              <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+              <input [type]="changetype?'password':'text'" name="your_pass" [(ngModel)]="user.password"  placeholder="Password"  required  #userPassword="ngModel"  />
+              <span class="eyeicon" (click)="viewPass()" style="
+              position: absolute;
+              left: 89%;
+              top: 32%;">
+                <i [ngClass]="visible?'fa fa-eye':'fa fa-eye-slash'" ></i></span>
+              <span class="spantag" *ngIf="userPassword.errors?.['required'] && userPassword.touched">Please Enter Valid password</span>
+
+            </div>
+            
+            <div class="form-group form-button">
+              <input (click)="signIn()" type="submit" name="signin" id="signin" class="form-submit" [disabled]="!userForm.valid" value="Log in" />
+            </div>
+          </form>
+          <div class="social-login">
+            <ul class="socials">
+
+              <li> <a  (click)="signinWithGoogle()" class="btn btn-sm btn-google btn-block text-uppercase btn-outline"
+                  style="box-shadow: 0 17px 27px rgb(240 69 6 / 27%);"><img
+                    src="https://img.icons8.com/color/16/000000/google-logo.png"> Sign-in Using Google</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</div>
+

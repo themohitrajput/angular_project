@@ -1,0 +1,306 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+<section class="h-100 gradient-custom" style="margin:0">
+  <div class="container">
+    <div class="row d-flex justify-content-center my-4">
+      <div class="col-md-8">
+        <div class="card mb-4">
+          <div class="card-header py-3" style="
+           
+            display: inline-flex;
+            justify-content: space-between;
+        ">
+            <h5 class="mb-0">Cart - {{cartItems.length}} items</h5>
+            <button class="btn btn-danger" (click)="deleteCart()">Clear Cart</button>
+          </div>
+          <div class="card-body">
+            <!-- Single item -->
+            <div class="row" *ngFor="let item of cartItems; index as i;">
+              <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+                <!-- Image -->
+                <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
+                  <img src="{{item.prodImage1}}" class="w-100" alt="Blue Jeans Jacket" />
+                  <p class="text-start text-md-center m-2">
+                    <strong>&#x20b9; {{item.prodPrice}}</strong>
+                    <span class="line-through">M.R.P.: ₹{{item.prodPrice+(item.prodPrice*20/100)}}</span>
+                  </p>
+
+                  <a href="#!">
+                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+                  </a>
+                </div>
+                <!-- Image -->
+              </div>
+
+              <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+                <!-- Data -->
+                <p><strong>{{item.prodName}}</strong></p>
+                <p>Color: {{item.flavour}}e</p>
+                <p>Size: M</p>
+                <button type="button" class="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
+                  title="Remove item" (click)="deleteItem(item._id)">
+                  <i class="fas fa-trash"></i>
+                </button>
+                <!-- <button type="button" class="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip"
+                  title="Move to the wish list">
+                  <i class="fas fa-heart"></i>
+                </button> -->
+                <!-- Data -->
+              </div>
+
+              <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                <!-- Quantity -->
+                <div class="d-flex mb-4" style="max-width: 300px">
+                  <!-- <button class="btn btn-primary px-3 me-2"
+                      onclick="this.parentNode.querySelector('input[id=form1]').stepDown()"
+                      (click)="minus($event,item.prodPrice)">
+                      <i class="fas fa-minus"></i>
+                    </button> -->
+                  <!-- <select class="form-control">
+                        <option>Default select</option>
+                      </select> -->
+
+                  <div class="">
+                    <input id="form1" #val min="1" name="quantity" value="1" type="number" class="form-control" />
+                    <!-- <select class="form-control" (change)="plus($event,item.prodPrice)">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                      </select> -->
+                    <label class="form-label d-block" for="form1">Quantity</label>
+                  </div>
+
+                  <button class="btn btn-primary px-3 ms-2"
+                    onclick="this.parentNode.querySelector('input[id=form1]').stepUp()"
+                    (click)="updateQuantity(i,val.value,'QTY')">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                  <button class="btn btn-primary px-3 me-2"
+                    onclick="this.parentNode.querySelector('input[id=form1]').stepDown()"
+                    (click)="updateQuantity(i,val.value,'QTY')">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+                <div class="d-flex mb-4" style="max-width: 300px">
+
+                  <!-- <select class="form-control">
+                        <option>Default select</option>
+                      </select> -->
+
+                  <div>
+                    <!-- <input id="form1" min="1" name="quantity" value="1" type="number" class="form-control" /> -->
+                    <select class="form-control" (change)="updateQuantity(i,$event,'SIZE')">
+                      <option>1 KG</option>
+                      <option>2 KG</option>
+                      <option>3 KG</option>
+                      <option>4 KG</option>
+                      <option>5 KG</option>
+                    </select>
+                    <label class="form-label d-block" for="form1">Available Sizes</label>
+                  </div>
+
+                </div>
+
+              </div>
+              <hr class="m-4" style="width:-webkit-fill-available" />
+
+            </div>
+            <!-- Single item -->
+
+
+
+            <!-- Single item -->
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-body">
+            <p><strong>Expected shipping delivery</strong></p>
+            <p class="mb-0">minimum 3 Hours and maximum same day</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="card-header py-3">
+            <h5 class="mb-0">Summary</h5>
+          </div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                Products
+                <span>&#x20b9;{{totalAmt}}</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                Shipping
+                <span>WITHIN 60 min</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                <div>
+                  <strong>Total amount</strong>
+                  <strong>
+                    <p class="mb-0">(including VAT)</p>
+                  </strong>
+                </div>
+                <h6 class="text-success">Free shipping</h6>
+                <span><strong>&#x20b9;{{totalAmt}}</strong></span>
+              </li>
+            </ul>
+            <button *ngIf="continue==0" type="button" class="btn btn-primary btn-lg btn-block" data-bs-toggle="modal"
+              data-bs-target="#myModal">
+              Go to checkout
+            </button>
+            <button *ngIf="continue!=0" type="button" class="btn btn-primary btn-lg btn-block" data-bs-toggle="modal"
+              data-bs-target="#exampleModal" style="background-color:blue;">
+              Procced To Payment
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">order Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="product-info-tabs">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="order-info-tab" data-bs-toggle="tab" href="#order-info" role="tab"
+                aria-controls="order-info" aria-selected="true">Product Info</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="payment-tab" data-bs-toggle="tab" href="#payment" role="tab"
+                aria-controls="payment" aria-selected="false">Payment</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="order-info" role="tabpanel" aria-labelledby="order-info-tab">
+              <div style="box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;">
+                <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-12">
+                    <form>
+                      <div class="form-group m-2">
+                        <label for="exampleFormControlTextarea1" >Alternative number</label>
+                        <input class="form-control" type="text" [(ngModel)]="alterNumber" name="alterNumber" id="exampleFormControlTextarea1">
+                      </div>
+                      <div class="form-group m-2">
+                        <label for="exampleFormControlTextarea1">you can Add some message</label>
+                        <textarea class="form-control" name="message" id="exampleFormControlTextarea1"
+                          [(ngModel)]="message" rows="3"></textarea>
+                      </div>
+                      <div class="form-group m-2">
+                        <label for="exampleFormControlTextarea1">Address</label>
+                        <textarea class="form-control" [(ngModel)]="Address" name="Address"
+                          id="exampleFormControlTextarea1" rows="3"></textarea>
+                      </div>
+
+                    </form>
+                  </div>
+                  <div class="col-lg-5 col-md-5 col-sm-12">
+                    <h5>Total Items :- {{cartItems.length}}</h5>
+                    <h5>Cake :- {{cartItems.length-smallItemCount}}</h5>
+                    <h5>celebration Items :- {{smallItemCount}}</h5>
+                    <hr>
+                    <h5>Total Amount :</h5>
+                    <h3>&#x20b9; {{totalAmt}}</h3>
+                    <div class="nav nav-tabs" id="myTab" role="tablist">
+                      <button type="button" class="btn btn-warning" style="background:rgb(255, 255, 40)"
+                        id="payment-tab" data-bs-toggle="tab" href="#payment" role="tab" aria-controls="payment"
+                        aria-selected="false">Procced To Buy</button>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+
+            </div>
+            <div class="tab-pane fade " #payment id="payment" role="tabpanel" aria-labelledby="payment-tab">
+
+              <!-- <div class="form-check">
+                <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked (click)="changePayMethod(online)">Online Payment (Razorpay)
+                <label class="form-check-label" for="radio1"></label>
+              </div>
+              <div class="form-check">
+                <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2" (click)="changePayMethod(cash)">Cash on Delivery
+                <label class="form-check-label" for="radio2"></label>
+              </div> -->
+              <h4>Choose your payment Option :</h4>
+              <button class="btn btn-primary d-block mt-3 width-50" data-bs-dismiss="modal" aria-label="Close"
+                (click)="onPay(1)">pay ₹{{totalAmt}}
+                (Razorpay)</button>
+              <div>Or</div>
+              <button class="btn btn-warning mt-3" data-bs-dismiss="modal" aria-label="Close" (click)="onPay(-1)">place
+                order (cash on delivery)</button>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- additional product -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button  class="btn btn-warning mt-3" data-bs-dismiss="modal" aria-label="Close" routerLink="/cart" (click)="continues()">Continue.......</button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3" *ngFor="let items of celebrationList">
+              <div class="addon-description">
+                <div class="addon-card">
+                  <div class="addon-image"><img src="{{items.prodImage1}}" alt="Magic Candles Set"
+                      class="img-fluid v-align-bottom lazyloaded" title="Magic Candles Set"></div>
+                  <div class="title-price-icon">
+                    <div class="title-price"><span class="addon-title">{{items.prodName}}</span>
+                      <span class="addon-price"><img
+                          src="https://media.bakingo.com/bakingo-ssr/static/media/rupees.ac282a46.svg" width="0"
+                          height="0" style="margin-right: 3px;">₹{{items.prodPrice}}
+                          <a style="margin-top:-1px ;" (click)=" addCart(items._id)" class=" round-black-btn"><i
+                            class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                          </a>
+                      </span>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="modal-footer">
+          
+          <button class="btn btn-warning mt-3" data-bs-dismiss="modal" aria-label="Close" data-bs-toggle="modal"
+          data-bs-target="#exampleModal" >continue</button>
+        </div> -->
+
+      </div>
+    </div>
+  </div>
+</div>

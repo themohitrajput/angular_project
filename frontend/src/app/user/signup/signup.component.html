@@ -1,0 +1,97 @@
+<div class="main">
+
+
+  <!-- Sign up form -->
+  <section class="signup m-0">
+    <div class="container">
+      <div class="signup-content p-sm-2 p-md-3 p-lg-5">
+        <div class="signup-form ">
+          <h2 class="form-title">Sign up</h2>
+          <form class="register-form" #userForm="ngForm" (ngSubmit)="userForm">
+            <div class="form-group">
+              <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+              <input required #username="ngModel" type="text" name="name" [(ngModel)]="user.name" id="name"
+                placeholder="Your Name" />
+              <span class="spantag" *ngIf="username.errors?.['required'] && username.touched">Please Enter Valid
+                Name</span>
+            </div>
+            <div class="form-group">
+              <label for="email"><i class="zmdi zmdi-email"></i></label>
+              <input type="email" name="email" id="email" placeholder="Your email" required [(ngModel)]="user.email"
+                #userEmail="ngModel" />
+              <span class="spantag" *ngIf="userEmail.errors?.['required'] && userEmail.touched">Please Enter Valid
+                Email</span>
+            </div>
+            <div class="form-group">
+              <label for="mobile"><i class="zmdi zmdi-smartphone-android"></i></label>
+              <input type="text" name="mobile" [(ngModel)]="user.mobile" id="mobile" placeholder="Your mobile" required
+                #userMobile="ngModel" />
+              <span class="spantag" *ngIf="userMobile.errors?.['required'] && userMobile.touched">Please Enter Valid
+                Mobile</span>
+            </div>
+            <div class="form-group">
+              <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+              <input [type]="changetype?'password':'text'" name="your_pass" [(ngModel)]="user.password" placeholder="Password" required
+                #userPassword="ngModel" />
+                <span class="eyeicon" (click)="viewPass()" style="position:absolute; top:32%; color:var(--head-text)" >
+                  <i [ngClass]="visible?'fa fa-eye':'fa fa-eye-slash'"></i></span>
+
+              <span class="spantag" *ngIf="userPassword.errors?.['required'] && userPassword.touched">Please Enter Valid
+                password</span>
+            </div>
+            <div class="form-group">
+              <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+              <input [type]="changetype2?'password':'text'" required #userRepassword="ngModel" [(ngModel)]="Repassword" name="re_pass"
+                id="re_pass" placeholder="Repeat your password" />
+                <span class="eyeicon" (click)="viewRePass()" style="position:absolute; top:32%; color:var(--head-text)" >
+                  <i [ngClass]="visible2?'fa fa-eye':'fa fa-eye-slash'"></i></span>
+              <span class="spantag" *ngIf="userRepassword.errors?.['required'] && userRepassword.touched">Please Enter
+                Valid password</span>
+            </div>
+            <div class="form-group">
+              <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+              <label for="agree-term" class="label-agree-term"><span><span></span></span>Agree Terms & condition</label>
+            </div>
+            <div class="form-group form-button" >
+              <input type="submit" data-bs-toggle="modal" data-bs-target=".bd-example-modal-sm"
+                [disabled]="!userForm.valid" (click)="sendOtp()" name="signup" id="signup" class="form-submit" value="Register" />
+            </div>
+          </form>
+        </div>
+        <div class="signup-image">
+          <figure><img src="../../../assets/images/logo.png" alt="sing up image"></figure>
+          <a routerLink="/signin" class="signup-image-link">I am already member</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+
+
+<div *ngIf="this.user.password == Repassword" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="card py-5 px-3">
+          <h5 class="m-0">Mobile phone verification</h5><span class="mobile-text">Enter the code we just send on your
+            mobile phone <b class="text-danger">+91 {{user.mobile}}</b></span>
+          <div class="d-flex flex-row mt-5">
+            <input type="text" class="form-control" ngModel maxlength="4" required placeholder="enter otp" autofocus=""
+              #otp1 name="otp" #otp="ngModel">
+            <div *ngIf="otp.invalid && (otp.dirty || otp.touched)" class="alert">
+              <span style="color:red" *ngIf="otp.errors?.['maxlength']">
+                Name must be at least 4 characters long.
+              </span>
+            </div>
+          </div>
+          <button class="btn btn-danger m-3" (click)="signUp(otp1.value)"  data-bs-dismiss="modal" aria-label="Close" >Verify & submit</button>
+          <div class="text-center mt-5"><span class="d-block mobile-text">Don't receive the code?</span><span
+              class="font-weight-bold text-danger cursor" (click)="sendOtp()">Resend</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
