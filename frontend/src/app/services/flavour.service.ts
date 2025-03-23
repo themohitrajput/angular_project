@@ -8,7 +8,7 @@ import { Product } from '../model/product';
   providedIn: 'root'
 })
 export class FlavourService {
-  url = "https://cake-web-ou58.onrender.com";
+  url = "https://cake-web-ou58.onrender.com/";
 
   private fetchFlaovryApi = this.url+"admin-flavour/findall";
   private productByFlavour = this.url+"admin-product/getProductbyFlavour"

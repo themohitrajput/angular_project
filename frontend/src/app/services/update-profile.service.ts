@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UpdateProfileService {
-  profile = "https://cake-web-ou58.onrender.comcustomer/profile"
+  profile = "https://cake-web-ou58.onrender.com/customer/profile"
   constructor(private http:HttpClient) { }
 
   

@@ -8,7 +8,7 @@ import { Product } from '../model/product';
   providedIn: 'root'
 })
 export class CategoryService {
-  url = "https://cake-web-ou58.onrender.com";
+  url = "https://cake-web-ou58.onrender.com/";
 
   constructor(private http:HttpClient) {}
    public getCategory():Observable<Category[]>{

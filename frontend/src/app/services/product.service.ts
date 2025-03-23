@@ -10,7 +10,7 @@ import { Product } from '../model/product';
 export class ProductService {
 
   constructor(private http: HttpClient) {}
-  url = "https://cake-web-ou58.onrender.com";
+  url = "https://cake-web-ou58.onrender.com/";
 
   public getProductbyCategory(categoryId: any):Observable<Product[]>{
     let getProductByCategory =

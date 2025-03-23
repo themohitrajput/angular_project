@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class WishlistService {
-  url = "https://cake-web-ou58.onrender.com";
+  url = "https://cake-web-ou58.onrender.com/";
   wishlistApi = this.url+'wishlist/add-to-wishlist';
   getWishlist = this.url+'wishlist/view-wishlist';
   deleteFullwishlist = this.url+'wishlist/delete-wishlist';

@@ -10,7 +10,7 @@ import { Product } from '../model/product';
 export class OccassionService {
 
   constructor( private http:HttpClient) { }
-  url = "https://cake-web-ou58.onrender.com";
+  url = "https://cake-web-ou58.onrender.com/";
 
   public getOccassion():Observable<Occassion[]>{
     let getOccassion = this.url+'occassion/viewOccassion';

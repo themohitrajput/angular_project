@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ContactService {
-  url = "https://cake-web-ou58.onrender.com";
+  url = "https://cake-web-ou58.onrender.com/";
 
   addQuaryApi = this.url+"support-admin/addQuery"
   constructor(private http:HttpClient) { }

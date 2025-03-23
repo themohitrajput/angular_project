@@ -8,7 +8,7 @@ import { environment } from "../../environments/environment.prod";
   providedIn: 'root'
 })
 export class LoginService {
-  url = "http://localhost:3000";
+  url = "https://cake-web-ou58.onrender.com/";
   signUpApi = this.url+"/customer/sign-up";
   signInApi = this.url+"/customer/sign-in"; 
   signupGoogle =this.url+"/customer/login-with-google"
